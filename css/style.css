@@ -12,8 +12,9 @@ p{
 	color:#555f66;
 }
 
-body{
+body, .main-content{
 	font-weight: 300;
+	overflow: hidden;
 }
 
 header nav h1 a{
@@ -46,17 +47,65 @@ header nav ul li{
 
 header nav li a{
 	text-decoration: none;
-	color:#555f66;
+	color:#838383;
+	padding:1em 0.5em;
+	-webkit-transition: background-color 0.5s ease;
+	-o-transition: background-color 0.5s ease;
+	transition: background-color 0.5s ease;
+
+}
+header nav li a.active{
+	background-color: #629DD1;
+	color:white;
+	-webkit-box-shadow: inset 0px -4px 21px -2px rgba(0,0,0,0.21);
+	-moz-box-shadow: inset 0px -4px 21px -2px rgba(0,0,0,0.21);
+	box-shadow: inset 0px -4px 21px -2px rgba(0,0,0,0.21);
 }
 
-header nav{
-	background: white;
-	position:fixed;
-	height:3em; 
-	width:100%;
-	display: table;
+header nav{ 
+	position:static;
+	z-index: 99;
 	border-bottom: 1px solid #ddd;
+	display: table;
+	width: 100%;
+	background: white;
+	height: 3em;
+	transition: transform 200ms linear;
+}
+.scrolling{
+	transform: translateY(-100%);
+}
+.fixed{
+	position: fixed;
+	transform: translateY(0%);
+}
+header, .features, .thumbnails{
+	position:relative;
+}
 
+#header:after {
+	content: '';
+	position: absolute;
+	display: block;
+	background: url(../images/skew-full-bottom-ccw.png) bottom;
+	background-size: 100% 100%;
+	height: 120px;
+	bottom: 0px;
+	width: 100%;
+}
+
+.features::after{
+  	display: block;
+}
+.thumbnails:before {
+  content: '';
+  position: absolute;
+  background: url(../images/skew-full-top-ccw.png) bottom;
+  background-size: 100% 100%;
+  height: 120px;
+  top: 0;
+  width: 100%;
+  display: block;
 }
 
 .btn-primary{
@@ -170,11 +219,14 @@ h1, h2, h3, h4{
 	line-height: 3em;
 	text-align: center;
 	border-radius: 100%;
+
 	box-shadow: 0 0 0 10px #fff, 0 0 0 11px rgba(144, 144, 144, 0.25);
 	color: white;
 	background: #629DD1;
 	margin-top:20px;
 	margin-bottom: 1.5em;
+
+
 }
 .features .row .col-4 h3{
 	font-size: 1.3em;
